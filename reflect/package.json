@@ -1,0 +1,15 @@
+{
+  "name": "reflect",
+  "version": "1.0.0",
+  "description": "",
+  "main": "reflect.js",
+  "scripts": {
+    "dev": "nodemon reflect.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
