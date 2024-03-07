@@ -33,6 +33,30 @@ delete withDelete.user
 
 assert.deepStrictEqual(withDelete.hasOwnProperty('user'), false)
 
+// forma segura e respeitando o ciclo de vida do JS
 const withReflection = { user: "Xuxa" };
 Reflect.deleteProperty(withReflection, "user")
 assert.deepStrictEqual(withReflection.hasOwnProperty('user'), false)
+
+// casos em que seja necessário garantir que estamos acessando a chave e caso não tenha levante um erro
+assert.throws(() => Reflect.get(1, 'userName'), TypeError)
+
+assert.ok('superman' in {superman: ''}) // verificar se uma chave existe
+assert.ok(Reflect.has({batman: ''}, 'batman'))
+
+const user = Symbol('user');
+
+const databaseUser = {
+  id: 1,
+  [Symbol.for('password')]: 123,
+  [user]: 'bruna',
+};
+
+const objectKeys = [
+  ...Object.getOwnPropertyNames(databaseUser),
+  ...Object.getOwnPropertySymbols(databaseUser),
+];
+
+assert.deepStrictEqual(objectKeys,['id', Symbol.for('password'), user])
+//Reflect.ownKeys é usado para fazer uma cópia segura de objetos
+assert.deepStrictEqual(Reflect.ownKeys(databaseUser),['id', Symbol.for('password'), user])
