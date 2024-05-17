@@ -1,4 +1,5 @@
 const { evaluateRegex } = require('../src/util')
+const Person = require('./person')
 /*
 o objetivo do fluent api é executar tarefas como um pipeline,
 passo a passo, e no final chamar o build, o foco é processos
@@ -48,6 +49,11 @@ class TextProcessorFulentAPI{
   removeEmptyCharacters(){
     const trimSpaces = evaluateRegex(/^\s+|\s+$|\n/g)
     this.#content = this.#content.map(line => line.map(item => item.replace(trimSpaces, '')))
+    return this
+  }
+
+  mapPerson(){
+    this.#content = this.#content.map(line => new Person(line))
     return this
   }
 
