@@ -1,0 +1,21 @@
+{
+  "name": "03.test-builder",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "lint:fix": "eslint . --fix",
+    "test": "npx mocha test/*.test.js",
+    "test:watch": "npx mocha -w test/*.test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@eslint/js": "^9.6.0",
+    "chai": "^4.4.1",
+    "eslint": "^9.6.0",
+    "globals": "^15.8.0",
+    "mocha": "^10.6.0"
+  }
+}
