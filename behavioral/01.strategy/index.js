@@ -13,6 +13,7 @@ const connectionStringMongoDB =
 const mongoDBContext = new ContextStrategy(
   new MongoDBStrategy(connectionStringMongoDB),
 );
+
 await mongoDBContext.connect();
 
 const data = [
